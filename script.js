@@ -52,10 +52,20 @@ class Deck {
     }
     
     shuffleDeck() {
-        
+        // Fisher-Yates shuffle algorithm
+        for (let i = this.deck.length - 1; i > 0; i--) {
+        // Generate random index between 0 and i
+         const j = Math.floor(Math.random() * (i + 1));
+        // Swap elements at positions i and j
+         [this.deck[i], this.deck[j]] = [this.deck[j], this.deck[i]];
+      
+
     }
+  }
 }
 
 const deck = new Deck
 deck.createDeck()
+deck.shuffleDeck()
+
 console.log(deck.deck)
