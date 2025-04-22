@@ -64,8 +64,60 @@ class Deck {
   }
 }
 
-const deck = new Deck
-deck.createDeck()
-deck.shuffleDeck()
+//Class for a GAme (Specifically our WAR game)
+/** Needs:
+ * - A deck... instantiate a new Deck inside our Game class
+ * 
+ * - Create the deck, shuffle the deck, and pass the deck...
+ * 
+ * - Logic to play the game 
+ *  - Turn based, how many terns?
+ *  - Do our players have a hand yet?
+ *  - Conrol flow statement logic to decide who wins?
+ * 
+ * - 2 players 
+ *  - Hand
+ *  - Score
+ *  - Name 
+ */
+class Game {
+    constructor() {
+        this.player1 = {
+            name: 'Player 1',
+            score: 0,
+            hand: []
+        }
+        this.player2 = {
+            name: 'Player 2',
+            score: 0,
+            hand: []
+        }
+    }
+ 
+    //Method to play the game 
+    /**
+     * Pass out cards to our players
+     * Take x amount of turns...
+     * as long as players have cards (or the number of cards they have)
+     * Award Points based on card.value
+     * Log the winner
+     */
+    playGame(){
+        //instantiate a new deck, create a deck, then suffle the deck
+        const deck = new Deck
+        deck.createDeck()
+        deck.shuffleDeck()
 
-console.log(deck.deck)
+        while (deck.deck.length !==0){
+            this.player1.hand.push(deck.deck.shift())
+            this.player2.hand.push(deck.deck.shift())
+        }
+        
+        
+    }
+
+}
+
+const game = new Game
+game.playGame()
+
