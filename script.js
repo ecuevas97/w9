@@ -113,7 +113,52 @@ class Game {
             this.player2.hand.push(deck.deck.shift())
         }
         
-        
+        // Actually playing the game... how many turns do I need?
+
+        for(let i = 0; i < this.player1.hand.length; i++) {
+            // Conditional logic to award points based on comparing the card values
+            if(this.player1.hand[i].value > this.player2.hand[i].value){
+                        //2               >         12
+             this.player1.score ++
+             console.log(`
+                P1 Card: ${this.player1.hand[i].name}
+                P2 Card: ${this.player2.hand[i].name}
+                Player 1 wins a point!
+                Current score: p1: ${this.player1.score}, p2: ${this.player2.score}
+                `)
+            } else if (this.player2.hand[i].value > this.player1.hand[i].value) {
+                this.player2.score ++
+             console.log(`
+                P1 Card: ${this.player1.hand[i].name}
+                P2 Card: ${this.player2.hand[i].name}
+                Player 2 wins a point!
+                Current score: p1: ${this.player1.score}, p2: ${this.player2.score}
+                `)
+            // if there is a tie
+            } else {
+             console.log(`
+                P1 Card: ${this.player1.hand[i].name}
+                P2 Card: ${this.player2.hand[i].name}
+                Tie: No points awarded
+                Current score: p1: ${this.player1.score}, p2: ${this.player2.score}
+                `)
+            }
+        }
+
+        if (this.player1.score > this.player2.score) {
+            console.log(`Player 1 wins!
+                Final Score: p1: ${this.player1.score}
+                             p2: ${this.player2.score}
+                `)
+        } else if (this.player2.score > this.player1.score){
+            console.log(`Player 2 wins!
+                Final Score: p1: ${this.player1.score}
+                             p2: ${this.player2.score}
+                `)
+        } else {
+            console.log('Tie')
+        }
+
     }
 
 }
